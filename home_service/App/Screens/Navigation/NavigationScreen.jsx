@@ -1,56 +1,183 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "../HomeScreen/HomeScreen";
-import BookingScreen from "../BookingScreen/BookingScreen";
 import ProfileScreen from "../ProfileScreen/ProfileScreen";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Entypo, FontAwesome, MaterialCommunityIcons  } from '@expo/vector-icons';
+import { Entypo, Foundation, MaterialIcons, AntDesign } from '@expo/vector-icons';
 import Colors from "../Utils/Colors";
+import UpNext from "../UpNext/UpNext";
+import BoardScreen from "../Board/BoardScreen";
+import ResultScreen from "../Results/ResultScreen";
+import SettingScreen from "../Settings/SettingScreen";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const TabNavigator = () => (
-  <Tab.Navigator screenOptions={{ headerShown: false }}>
+  <Tab.Navigator screenOptions={{ headerShown: false, }} >
     <Tab.Screen
-      name="home"
-      component={HomeScreen}
+      name="up_next"
+      component={UpNext}
+      tabBarOptions={{
+        activeTintColor: Colors.WHITE,
+        inactiveTintColor: Colors.WHITE,
+        style: {
+          backgroundColor: Colors.DARK_GREY,
+        },
+      }}
       options={{
         tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.PRIMARY, fontSize: 16, fontFamily:'Outfit-Medium' }}>Home</Text>
+          <Text style={{ color: Colors.WHITE, fontSize: 12,  }}>Up Next</Text>
           
         ),
 
         tabBarIcon: ({ color, size }) => (
-            <Entypo  name="home" size={24} color={Colors.PRIMARY}  />
+          <MaterialIcons name="navigate-next" size={24} color={Colors.WHITE} />
             
           ),
-      }}
-    />
-    <Tab.Screen name="booking" component={BookingScreen} 
-    options={{
-        tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.PRIMARY, fontSize: 16, fontFamily:'Outfit-Medium' }}>Booking</Text>
 
-        ),
-        tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="bookmark" size={24} color={Colors.PRIMARY}  />
-            
-          ),
+        tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+
+        
+
+       
       }}
       
     />
-    <Tab.Screen name="profile" component={ProfileScreen} 
-    options={{
+
+    
+
+
+<Tab.Screen
+      name="result"
+      component={ResultScreen}
+      tabBarOptions={{
+        activeTintColor: Colors.WHITE,
+        inactiveTintColor: Colors.WHITE,
+        style: {
+          backgroundColor: Colors.DARK_GREY,
+        },
+      }}
+      options={{
         tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.PRIMARY, fontSize: 16, fontFamily:'Outfit-Medium' }}>Profile</Text>
+          <Text style={{ color: Colors.WHITE, fontSize: 12,  }}>Results</Text>
+          
         ),
+
         tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="face-man-profile" size={24} color={Colors.PRIMARY}  />
+          <Foundation name="results" size={24} color={Colors.WHITE} />
             
           ),
+
+        tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+
+        
+
+       
       }}
+      
     />
+
+<Tab.Screen
+      name="board"
+      component={BoardScreen}
+      tabBarOptions={{
+        activeTintColor: Colors.WHITE,
+        inactiveTintColor: Colors.WHITE,
+        style: {
+          backgroundColor: Colors.DARK_GREY,
+        },
+      }}
+      options={{
+        tabBarLabel: ({ color }) => (
+          <Text style={{ color: Colors.WHITE, fontSize: 12,  }}>Leaderboard</Text>
+          
+        ),
+
+        tabBarIcon: ({ color, size }) => (
+          <MaterialIcons name="leaderboard" size={24} color={Colors.WHITE} />
+          ),
+
+        tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+
+        
+
+       
+      }}
+      
+    />
+    <Tab.Screen
+      name="profile"
+      component={ProfileScreen}
+      tabBarOptions={{
+        activeTintColor: Colors.WHITE,
+        inactiveTintColor: Colors.WHITE,
+        style: {
+          backgroundColor: Colors.DARK_GREY,
+        },
+      }}
+      options={{
+        tabBarLabel: ({ color }) => (
+          <Text style={{ color: Colors.WHITE, fontSize: 12,  }}>Profile</Text>
+          
+        ),
+
+        tabBarIcon: ({ color, size }) => (
+          <AntDesign name="user" size={24} color={Colors.WHITE} />
+            
+          ),
+
+        tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+
+        
+
+       
+      }}
+      
+    />
+
+<Tab.Screen
+      name="setting"
+      component={SettingScreen}
+      tabBarOptions={{
+        activeTintColor: Colors.WHITE,
+        inactiveTintColor: Colors.WHITE,
+        style: {
+          backgroundColor: Colors.DARK_GREY,
+        },
+      }}
+      options={{
+        tabBarLabel: ({ color }) => (
+          <Text style={{ color: Colors.WHITE, fontSize: 12,  }}>Setting</Text>
+          
+        ),
+
+        tabBarIcon: ({ color, size }) => (
+          <AntDesign name="setting" size={24} color={Colors.WHITE} />
+          ),
+
+        tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+
+        
+
+       
+      }}
+      
+    />
+   
+
+
+
+    
   </Tab.Navigator>
 );
 
@@ -61,3 +188,5 @@ export default function NavigationScreen() {
     </Stack.Navigator>
   );
 }
+
+

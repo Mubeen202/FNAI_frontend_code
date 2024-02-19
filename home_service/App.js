@@ -6,6 +6,7 @@ import * as SecureStore from "expo-secure-store";
 import { useFonts } from "expo-font";
 import NavigationScreen from "./App/Screens/Navigation/NavigationScreen";
 import { NavigationContainer } from "@react-navigation/native";
+import Colors from "./App/Screens/Utils/Colors";
 const tokenCache = {
   async getToken(key) {
     try {
@@ -57,17 +58,18 @@ export default function App() {
     //     </SignedOut>
     //   {/* </SafeAreaView> */}
     // </ClerkProvider>
-
+<View style={styles.container}>
     <NavigationContainer>
       <NavigationScreen />
     </NavigationContainer>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffg",
-    padding: 20,
+    backgroundColor: Colors.DARK_GREY,
+    padding: 10,
   },
 });

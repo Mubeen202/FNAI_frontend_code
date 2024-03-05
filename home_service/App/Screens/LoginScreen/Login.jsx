@@ -30,9 +30,7 @@ export default function Login() {
   return (
     <View>
       <View style={styles.container}>
-        <Image source={require('../../../assets/profile3.jpg')}
-        style ={styles.loginImage}
-        />
+     
       </View>
       <View style={styles.subContainer}>
       

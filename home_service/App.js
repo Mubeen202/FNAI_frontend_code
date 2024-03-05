@@ -7,6 +7,7 @@ import { useFonts } from "expo-font";
 import NavigationScreen from "./App/Screens/Navigation/NavigationScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import Colors from "./App/Screens/Utils/Colors";
+import TopNavigationScreen from "./App/Screens/TopNavigation/TopNavigationScreen";
 const tokenCache = {
   async getToken(key) {
     try {
@@ -60,7 +61,7 @@ export default function App() {
     // </ClerkProvider>
 <View style={styles.container}>
     <NavigationContainer>
-      <NavigationScreen />
+      <TopNavigationScreen />
     </NavigationContainer>
     </View>
   );

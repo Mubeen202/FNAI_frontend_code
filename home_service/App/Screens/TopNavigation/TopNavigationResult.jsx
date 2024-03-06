@@ -9,10 +9,11 @@ import Laliga from "./Laliga/Laliga";
 import Bundesliga from "./Bundesliga/Bundesliga";
 import Serie from "./Serie_A/Serie";
 import Ligue from "./Ligue_1/Ligue";
+import PremierResult from "./Premier/PremierResult/PremierResult";
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function TopNavigationScreen() {
+export default function TopNavigationResult() {
   // Inside your component or screen where you define the tab screen
   const focused = useIsFocused();
   return (
@@ -37,9 +38,9 @@ export default function TopNavigationScreen() {
       }}
     >
       <Tab.Screen
-        name="premier"
+        name="premier_result"
         options={{ tabBarLabel: "Premier" }}
-        component={Premier}
+        component={PremierResult}
       />
       <Tab.Screen
         name="laliga"
@@ -69,8 +70,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.WHITE,
     color: Colors.WHITE,
-    marginTop: 20,
-
+    marginTop: 30,
   },
   text: {
     color: Colors.WHITE,

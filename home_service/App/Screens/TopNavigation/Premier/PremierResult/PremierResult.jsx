@@ -1,10 +1,65 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import MatchCard from './MatchCard';
+import PremierResultData from './PremierResultData'
+import Colors from '../../../Utils/Colors';
 
 export default function PremierResult() {
+const [matchData, setMatchData]=useState(PremierResultData)
+useEffect(()=>{
+  setMatchData(PremierResultData)
+  
+},[matchData])
   return (
-    <View>
-      <Text>PremierResult</Text>
-    </View>
-  )
+    <ScrollView contentContainerStyle={styles.container}>
+      {matchData.map((item, index) => (
+      <MatchCard
+        key={index} // Make sure to add a unique key prop
+        team1Name={item.team1Name}
+        team1Image={item.team1Image}
+        team2Name={item.team2Name}
+        team2Image={item.team2Image}
+        team1Goals={item.team1Goals}
+        team2Goals={item.team2Goals}
+      />
+    ))}
+
+        {/* <MatchCard
+        team1Name="Manchester City"
+        team1Image={require('../../../../assets/teams/Manchester_City_FC_badge.svg.png')}
+        team2Name="Manchester United"
+        team2Image={require('../../../../assets/teams/Manchester_United_FC_crest.svg.png')}
+        date="19-02-2024"
+        stats={[
+          {user_id:1, team1:4, team2:4},
+          {user_id:2, team1:2, team2:3},
+          {user_id:3, team1:3, team2:1},
+          {user_id:4, team1:2, team2:3},
+          {user_id:5, team1:0, team2:2},
+          {user_id:6, team1:4, team2:0},
+          {user_id:7, team1:3, team2:3},
+          {user_id:8, team1:6, team2:4},
+          {user_id:9, team1:4, team2:1},
+          {user_id:10, team1:5, team2:3},
+          {user_id:11, team1:6, team2:6},
+        ]}
+      /> */}
+
+      
+  
+    </ScrollView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    backgroundColor: Colors.LIGHT_GREY,
+    alignItems: 'center',
+    paddingHorizontal: 0,
+    paddingTop: 0, // Adjust paddingTop as needed
+    paddingBottom: 20, // Adjust paddingBottom as needed
+    gap:-8,
+  },
+});

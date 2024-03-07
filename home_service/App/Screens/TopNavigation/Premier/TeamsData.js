@@ -68,7 +68,7 @@ export default teamsData = [
       {
         team1Name: "Leeds United",
         team1Image: require('../../../../assets/teams/Manchester_United_FC_crest.svg.png'),
-        team2Name: "Leicester City",
+        team2Name: "Manchester United",
         team2Image: require('../../../../assets/teams/Manchester_City_FC_badge.svg.png'),
         date: "20-02-2024",
         time: "05:15",

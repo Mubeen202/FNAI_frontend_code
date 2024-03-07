@@ -24,8 +24,7 @@ const MatchCard = ({
 
     // Toggle expansion state
     const toggleExpansion = () => {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); // Add animation
-      setExpanded(!expanded);
+      setExpanded(!expanded); // Toggle the expanded state
     };
 
 
@@ -41,7 +40,6 @@ const MatchCard = ({
     time,
     stats},[stats])
 
-    console.log('stats', stats)
 
   // Initialize counters for wins, losses, and draws
   let wins = 0;
@@ -70,9 +68,6 @@ const MatchCard = ({
     const winPercentage = (wins / totalMatches) * 100;
     const losePercentage = (losses / totalMatches) * 100;
     const drawPercentage = (draws / totalMatches) * 100;
-    console.log('win', winPercentage)
-    console.log('lose', losePercentage)
-    console.log('draw', drawPercentage)
 
   if (winPercentage > losePercentage) {
     winColor = "green";
@@ -84,92 +79,212 @@ const MatchCard = ({
 
   return (
     <>
-    <View style={styles.container}>
-      {/* First Section */}
-      <View style={styles.section}>
-        <View style={styles.teamContainer}>
-          <Text numberOfLines={1} style={styles.text}>
-            {team1Name}
-          </Text>
-          <Image source={team1Image} style={styles.image} />
-        </View>
-      </View>
-
-      {/* Middle Section */}
-      <View style={[styles.section, styles.middleSection]}>
-        <Text style={styles.vsText}>VS</Text>
-        <View style={styles.dateTimeContainer}>
-          <Text style={styles.date}>{date}</Text>
-          <Text style={styles.time}>{time}</Text>
-        </View>
-
-        {/* Progress Bar Section */}
-        <View style={styles.stats}>
-          {/* First column - Win */}
-          <View style={styles.column}>
-            <Text style={{ color: Colors.WHITE, fontSize: 12 }}>{winPercentage.toFixed(2)}%</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <View
-                style={{
-                  backgroundColor: winColor,
-                  width: `${winPercentage*1.5}%`,
-                  height: 10,
-                  marginRight: 5,
-                  borderRadius: 19,
-                }}
-              />
+  
+  <View style={styles.mainContainer}>
+    <View style={styles.wrapperContainer}>
+        
+        <View style={styles.container}>
+          {/* First Section */}
+          <View style={styles.section}>
+            <View style={styles.teamContainer}>
               
+              <Text numberOfLines={1} style={styles.text}>
+                {team1Name}
+              </Text>
+              <TouchableOpacity onPress={toggleExpansion}>
+              <Image source={team1Image} style={styles.image} />
+              </TouchableOpacity>
+            </View>
+            
+          </View>
+
+          {/* Second Section */}
+          <View style={[styles.section, styles.middleSection]}>
+            <Text style={styles.vsText}>VS</Text>
+            <View style={styles.dateTimeContainer}>
+              <Text style={styles.date}>{date}</Text>
+              <Text style={styles.time}>{time}</Text>
+            </View>
+
+            {/* Progress Bar Section */}
+            <View style={styles.stats}>
+              {/* First column - Win */}
+              <View style={styles.column}>
+                <Text style={{ color: Colors.WHITE, fontSize: 12 }}>{winPercentage.toFixed(2)}%</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <View
+                    style={{
+                      backgroundColor: winColor,
+                      width: `${winPercentage*1.5}%`,
+                      height: 10,
+                      marginRight: 5,
+                      borderRadius: 19,
+                    }}
+                  />
+                  
+                </View>
+              </View>
+              {/* Second column - Draw */}
+              <View style={styles.column}>
+                <Text style={{ color: Colors.WHITE, fontSize: 12 }}> {drawPercentage.toFixed(2)}%</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <View
+                    style={{
+                      backgroundColor: drawColor,
+                      width: `${drawPercentage*1.5}%`,
+                      height: 10,
+                      marginRight: 5,
+                      borderRadius: 19,
+                    }}
+                  />
+                  
+                </View>
+              </View>
+              {/* Third Colum */}
+              <View style={styles.column}>
+                <Text style={{ color: Colors.WHITE, fontSize: 12 }}>{losePercentage.toFixed(2)}%</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <View
+                    style={{
+                      backgroundColor: loseColor,
+                      width: `${losePercentage*1.5}%`,
+                      height: 10,
+                      marginRight: 5,
+                      borderRadius: 19,
+                    }}
+                  />
+                  
+                </View>
+              </View>
             </View>
           </View>
-          {/* Second column - Draw */}
-          <View style={styles.column}>
-            <Text style={{ color: Colors.WHITE, fontSize: 12 }}> {drawPercentage.toFixed(2)}%</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <View
-                style={{
-                  backgroundColor: drawColor,
-                  width: `${drawPercentage*1.5}%`,
-                  height: 10,
-                  marginRight: 5,
-                  borderRadius: 19,
-                }}
-              />
-              
-            </View>
+
+          
+
+          {/* Third Section */}
+          <View style={styles.section}>
+            <Text numberOfLines={1} style={styles.otherteamtext}>
+              {team2Name}
+            </Text>
+            <TouchableOpacity onPress={toggleExpansion}>
+            <Image source={team2Image} style={styles.image} />
+            </TouchableOpacity>
           </View>
-          {/* Third Colum */}
-          <View style={styles.column}>
-            <Text style={{ color: Colors.WHITE, fontSize: 12 }}>{losePercentage.toFixed(2)}%</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <View
-                style={{
-                  backgroundColor: loseColor,
-                  width: `${losePercentage*1.5}%`,
-                  height: 10,
-                  marginRight: 5,
-                  borderRadius: 19,
-                }}
-              />
-              
-            </View>
-          </View>
+
+          
+
+
+
+
+          
         </View>
+      
       </View>
-
-      {/* Last Section */}
-      <View style={styles.section}>
-        <Text numberOfLines={1} style={styles.otherteamtext}>
-          {team2Name}
-        </Text>
-        <Image source={team2Image} style={styles.image} />
-      </View>
-
-
-
 
       
-    </View>
-    
+      </View>
+      {expanded && 
+
+
+   
+        <View style={styles.expandedContainer}>
+          {/* First Section */}
+          <View style={styles.section}>
+            <View style={styles.teamContainer}>
+              
+              <Text numberOfLines={1} style={styles.text}>
+                {team1Name}
+              </Text>
+              <TouchableOpacity onPress={toggleExpansion}>
+              <Image source={team1Image} style={styles.image} />
+              </TouchableOpacity>
+            </View>
+            
+          </View>
+
+          {/* Second Section */}
+          <View style={[styles.section, styles.middleSection]}>
+            <Text style={styles.vsText}>VS</Text>
+            <View style={styles.dateTimeContainer}>
+              <Text style={styles.date}>{date}</Text>
+              <Text style={styles.time}>{time}</Text>
+            </View>
+
+            {/* Progress Bar Section */}
+            <View style={styles.stats}>
+              {/* First column - Win */}
+              <View style={styles.column}>
+                <Text style={{ color: Colors.WHITE, fontSize: 12 }}>{winPercentage.toFixed(2)}%</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <View
+                    style={{
+                      backgroundColor: winColor,
+                      width: `${winPercentage*1.5}%`,
+                      height: 10,
+                      marginRight: 5,
+                      borderRadius: 19,
+                    }}
+                  />
+                  
+                </View>
+              </View>
+              {/* Second column - Draw */}
+              <View style={styles.column}>
+                <Text style={{ color: Colors.WHITE, fontSize: 12 }}> {drawPercentage.toFixed(2)}%</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <View
+                    style={{
+                      backgroundColor: drawColor,
+                      width: `${drawPercentage*1.5}%`,
+                      height: 10,
+                      marginRight: 5,
+                      borderRadius: 19,
+                    }}
+                  />
+                  
+                </View>
+              </View>
+              {/* Third Colum */}
+              <View style={styles.column}>
+                <Text style={{ color: Colors.WHITE, fontSize: 12 }}>{losePercentage.toFixed(2)}%</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <View
+                    style={{
+                      backgroundColor: loseColor,
+                      width: `${losePercentage*1.5}%`,
+                      height: 10,
+                      marginRight: 5,
+                      borderRadius: 19,
+                    }}
+                  />
+                  
+                </View>
+              </View>
+            </View>
+          </View>
+
+          
+
+          {/* Third Section */}
+          <View style={styles.section}>
+            <Text numberOfLines={1} style={styles.otherteamtext}>
+              {team2Name}
+            </Text>
+            <TouchableOpacity onPress={toggleExpansion}>
+            <Image source={team2Image} style={styles.image} />
+            </TouchableOpacity>
+          </View>
+
+          
+
+
+
+
+          
+        </View>
+
+   }
+  
 </>
     
 
@@ -179,6 +294,24 @@ const MatchCard = ({
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: Colors.DARK_GREY,
+    borderRadius: 10,
+    padding: 6,
+    margin: 10,
+    gap: 60,
+  },
+  wrapperContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  expandedContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flex: 1,
+    backgroundColor:Colors.LIGHT_GREY,
+    borderColor:Colors.BLACK
+  },
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -186,7 +319,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 6,
     margin: 10,
-    gap: 60,
+    gap: 70,
+    width:'96%'
   },
   section: {
     flex: 1,

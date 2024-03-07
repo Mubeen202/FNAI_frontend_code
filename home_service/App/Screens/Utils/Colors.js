@@ -5,5 +5,6 @@ export default{
     DARK_PURPLE:'#20242F',
     WHITE:'#F6F2F2',
     PRIMARY:'#E42E70',
-    BLACK:'#000000'
+    BLACK:'#000000',
+    GREY:'#6E6E6D',
 }

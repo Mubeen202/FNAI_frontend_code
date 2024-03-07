@@ -10,6 +10,13 @@ useEffect(()=>{
   setMatchData(teamsData)
   
 },[matchData])
+
+const [expandedIndex, setExpandedIndex] = useState(-1);
+
+// Toggle expansion state
+const toggleExpansion = (index) => {
+  setExpandedIndex(index === expandedIndex ? -1 : index);
+};
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {matchData.map((item, index) => (
@@ -22,6 +29,8 @@ useEffect(()=>{
         date={item.date}
         time={item.time}
         stats={item.stats}
+        expanded={index === expandedIndex}
+        toggleExpansion={() => toggleExpansion(index)}
       />
       
     ))}

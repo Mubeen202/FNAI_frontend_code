@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Colors from "../../Utils/Colors";
 import { AntDesign } from "@expo/vector-icons";
+import DropdownMenu from "./DropdownMenu";
 const MatchCard = ({
   team1Name,
   team1Image,
@@ -17,20 +18,9 @@ const MatchCard = ({
   date,
   time,
   stats,
+  expanded,
+   toggleExpansion
 }) => {
-
-
-    const [expanded, setExpanded] = useState(false);
-
-    // Toggle expansion state
-    const toggleExpansion = () => {
-      setExpanded(!expanded); // Toggle the expanded state
-    };
-
-
-
-
-
 
   useEffect(()=>{team1Name,
     team1Image,
@@ -187,101 +177,7 @@ const MatchCard = ({
 
 
    
-        <View style={styles.expandedContainer}>
-          {/* First Section */}
-          <View style={styles.section}>
-            <View style={styles.teamContainer}>
-              
-              <Text numberOfLines={1} style={styles.text}>
-                {team1Name}
-              </Text>
-              <TouchableOpacity onPress={toggleExpansion}>
-              <Image source={team1Image} style={styles.image} />
-              </TouchableOpacity>
-            </View>
-            
-          </View>
-
-          {/* Second Section */}
-          <View style={[styles.section, styles.middleSection]}>
-            <Text style={styles.vsText}>VS</Text>
-            <View style={styles.dateTimeContainer}>
-              <Text style={styles.date}>{date}</Text>
-              <Text style={styles.time}>{time}</Text>
-            </View>
-
-            {/* Progress Bar Section */}
-            <View style={styles.stats}>
-              {/* First column - Win */}
-              <View style={styles.column}>
-                <Text style={{ color: Colors.WHITE, fontSize: 12 }}>{winPercentage.toFixed(2)}%</Text>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <View
-                    style={{
-                      backgroundColor: winColor,
-                      width: `${winPercentage*1.5}%`,
-                      height: 10,
-                      marginRight: 5,
-                      borderRadius: 19,
-                    }}
-                  />
-                  
-                </View>
-              </View>
-              {/* Second column - Draw */}
-              <View style={styles.column}>
-                <Text style={{ color: Colors.WHITE, fontSize: 12 }}> {drawPercentage.toFixed(2)}%</Text>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <View
-                    style={{
-                      backgroundColor: drawColor,
-                      width: `${drawPercentage*1.5}%`,
-                      height: 10,
-                      marginRight: 5,
-                      borderRadius: 19,
-                    }}
-                  />
-                  
-                </View>
-              </View>
-              {/* Third Colum */}
-              <View style={styles.column}>
-                <Text style={{ color: Colors.WHITE, fontSize: 12 }}>{losePercentage.toFixed(2)}%</Text>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <View
-                    style={{
-                      backgroundColor: loseColor,
-                      width: `${losePercentage*1.5}%`,
-                      height: 10,
-                      marginRight: 5,
-                      borderRadius: 19,
-                    }}
-                  />
-                  
-                </View>
-              </View>
-            </View>
-          </View>
-
-          
-
-          {/* Third Section */}
-          <View style={styles.section}>
-            <Text numberOfLines={1} style={styles.otherteamtext}>
-              {team2Name}
-            </Text>
-            <TouchableOpacity onPress={toggleExpansion}>
-            <Image source={team2Image} style={styles.image} />
-            </TouchableOpacity>
-          </View>
-
-          
-
-
-
-
-          
-        </View>
+        <DropdownMenu/>
 
    }
   

@@ -141,7 +141,7 @@ const MatchCard = ({
       width: 64,
       padding: 5,
       marginTop: -4,
-      height: 40,
+      height: 44,
     },
     goalContainer: {
       flexDirection: "row",

@@ -69,7 +69,7 @@ const ProfileScreen = () => {
         justifyContent: "space-between",
         backgroundColor: Colors.LIGHT_GREY,
         borderRadius: 10,
-        // padding: 6,
+        padding: 24,
         // margin: 10,
         // gap: 60,
       }}
@@ -87,6 +87,8 @@ const ProfileScreen = () => {
       </View>
 
       <View style={{ flex: 1, alignItems: "center" }}>
+
+        
    
         <Image
           source={images.profile}
@@ -97,15 +99,53 @@ const ProfileScreen = () => {
             borderRadius: 99,
             borderColor: COLORS.primary,
             borderWidth: 2,
-            marginTop: -160,
+            marginTop: -220,
+            paddingBottom: 20
+          }}
+        />
+<Image
+          source={require('../../../assets/European Leagues/DE - Bundes Liga/VfL Bochum.png')}
+          resizeMode="cover"
+          style={{
+            height: 40,
+            width: 40,
+            borderColor: COLORS.primary,
+            marginTop: 0,
+            marginRight:250,
+            paddingBottom: 20
+          }}
+        />
+        <Image
+          source={require('../../../assets/European Leagues/DE - Bundes Liga/1.FSV Mainz 05.png')}
+          resizeMode="cover"
+          style={{
+            height: 40,
+            width: 40,
+            borderColor: COLORS.primary,
+            marginTop: -40,
+            marginRight:150,
+            paddingBottom: 20
+          }}
+        />
+        <Image
+          source={require('../../../assets/European Leagues/DE - Bundes Liga/Bayern Munich.png')}
+          resizeMode="cover"
+          style={{
+            height: 40,
+            width: 40,
+            borderColor: COLORS.primary,
+            marginTop: -38,
+            marginRight:50,
             paddingBottom: 20
           }}
         />
 
+{/* 
         <Text
           style={{
             color: COLORS.white,
             marginVertical: 8,
+            marginTop:40
           }}
         >
           Melissa Peters
@@ -251,7 +291,7 @@ const ProfileScreen = () => {
               Add Friend
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
 
     </View>

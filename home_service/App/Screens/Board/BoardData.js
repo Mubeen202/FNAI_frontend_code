@@ -110,7 +110,7 @@ export default BoardData = [
   {
     Pos: "13",
     name: "muah345",
-    icon: require("../../../assets/prizeIcon.png"),
+    icon: require("../../../assets/icons/Gold_Badge.svg"),
     p_: 250,
     pts_p: 9.78,
     pts: 2610,
@@ -119,7 +119,7 @@ export default BoardData = [
   {
     Pos: "14",
     name: "noah2013",
-    icon: require("../../../assets/prizeIcon.png"),
+    icon: require("../../../assets/icons/Gold_Cup.svg"),
     p_: 267,
     pts_p: 9.81,
     pts: 2620,

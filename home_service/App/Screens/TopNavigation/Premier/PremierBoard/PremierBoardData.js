@@ -2,7 +2,7 @@ export default PremierBoardData = [
     {
       Pos: "1",
       name: "muah345",
-      icon: require("../../../../../assets/prizeIcon.png"),
+      icon: require("../../../../../assets/icons/Gold_Cup.svg"),
       p_: 250,
       pts_p: 9.78,
       pts: 2610,
@@ -11,7 +11,7 @@ export default PremierBoardData = [
     {
       Pos: "2",
       name: "noah2013",
-      icon: require("../../../../../assets/prizeIcon.png"),
+      icon: require("../../../../../assets/icons/Gold_Star_Cup.svg"),
       p_: 267,
       pts_p: 9.81,
       pts: 2620,

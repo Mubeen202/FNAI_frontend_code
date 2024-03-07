@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import BoardData from "./BoardData";
 import Colors from "../Utils/Colors";
+import { SvgXml } from 'react-native-svg';
 import {
   Entypo,
   Foundation,
@@ -58,6 +59,8 @@ const Boards = () => {
             </View>
             <View style={[styles.leftCell, styles.iconCell]}>
               <Image source={item.icon} style={styles.icon} />
+              
+              {/* <SvgXml xml={item.icon} style={styles.icon}/> */}
             </View>
             <View style={styles.leftCell}>
               <Text style={styles.cellText}>{item.name}</Text>

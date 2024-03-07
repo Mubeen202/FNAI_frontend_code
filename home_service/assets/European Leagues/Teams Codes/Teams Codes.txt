@@ -1,0 +1,5 @@
+Premier League		PL-01
+La Liga			LL-01
+Bundes Liga		BL-01
+Serie A			SA-01
+Ligue 1			L1-01

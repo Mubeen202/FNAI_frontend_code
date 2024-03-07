@@ -13,7 +13,7 @@ const PremierBoard = () => {
   const [data, setData] = useState(PremierBoardData);
   useEffect(() => {
     setData(PremierBoardData);
-  }, []);
+  }, [PremierBoardData]);
   return (
     <>
      <View style={styles.container}>

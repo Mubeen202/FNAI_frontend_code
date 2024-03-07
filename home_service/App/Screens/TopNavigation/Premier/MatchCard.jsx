@@ -225,14 +225,15 @@ const styles = StyleSheet.create({
   middleSection: {
     flexDirection: "column",
     alignItems: "center",
+    gap:12
   },
   teamContainer: {
     alignItems: "center",
   },
   image: {
-    width: 70,
-    height: 70,
-    borderRadius: 25,
+    width: 80,
+    height: 100,
+    borderRadius: 0,
   },
   text: {
     marginBottom: 20, // Add margin bottom for vertical space
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
     width: 64,
     padding: 5,
     marginTop: -4,
-    height: 40,
+    height: 45,
   },
   dateTimeContainer: {
     flexDirection: "row",

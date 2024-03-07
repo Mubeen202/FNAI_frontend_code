@@ -35,6 +35,7 @@ export default function TopNavigationResult() {
           // borderBottomLeftRadius: focused ? 29 : 0,
           marginTop: 30,
         },
+        // tabBarActiveBackgroundColor: Colors.LIGHT_GREY,
       }}
     >
       <Tab.Screen

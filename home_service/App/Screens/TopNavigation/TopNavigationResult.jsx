@@ -10,6 +10,7 @@ import Bundesliga from "./Bundesliga/Bundesliga";
 import Serie from "./Serie_A/Serie";
 import Ligue from "./Ligue_1/Ligue";
 import PremierResult from "./Premier/PremierResult/PremierResult";
+import LaligaResults from "./Laliga/LaligaResults/LaligaResults";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -39,14 +40,14 @@ export default function TopNavigationResult() {
       }}
     >
       <Tab.Screen
-        name="premier_result"
+        name="premier"
         options={{ tabBarLabel: "Premier" }}
         component={PremierResult}
       />
       <Tab.Screen
         name="laliga"
         options={{ tabBarLabel: "Laliga" }}
-        component={Laliga}
+        component={LaligaResults}
       />
       <Tab.Screen
         name="bundesliga"

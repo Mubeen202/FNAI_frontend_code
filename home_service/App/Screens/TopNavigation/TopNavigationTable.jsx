@@ -40,7 +40,7 @@ export default function TopNavigationTable() {
       }}
     >
       <Tab.Screen
-        name="premier_table"
+        name="premier"
         options={{ tabBarLabel: "Premier" }}
         component={PremierMatchesTable}
       />

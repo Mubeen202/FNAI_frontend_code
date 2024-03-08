@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet,Image, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Colors from '../../../Utils/Colors';
-import PremierMatchesData from './PremierMatchesData';
+import LaligaTableData from './LaligaTableData';
 
-export default function PremierMatchesTable() {
-    const [data, setData]= useState(PremierMatchesData)
+export default function LaligaMatchTable() {
+    const [data, setData]= useState(LaligaTableData)
     useEffect(()=>{
-        setData(PremierMatchesData)
+        setData(LaligaTableData)
     },[data])
   return (
     <View style={styles.container}>

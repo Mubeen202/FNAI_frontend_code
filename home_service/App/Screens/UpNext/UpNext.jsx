@@ -10,8 +10,6 @@ export default function UpNext() {
   return (
     <View style={styles.container}> 
       <TopNavigationScreen/>
-        
-      
     </View>
   )
 }

@@ -21,17 +21,13 @@ export default function TopNavigationScreen() {
         headerShown: false,
         tabBarActiveTintColor: Colors.WHITE,
         tabBarInactiveTintColor: Colors.WHITE,
-
         tabBarLabelStyle: {
-          fontSize: 14,
+          fontSize: 11,
           textTransform: "none",
+          flexWrap: "nowrap", // Prevent label from wrapping to multiple lines
         },
         tabBarStyle: {
           backgroundColor: Colors.DARK_GREY,
-          // borderTopLeftRadius: focused ? 29 : 0,
-          // borderTopRightRadius: focused ? 29 : 0,
-          // borderBottomRightRadius: focused ? 29 : 0,
-          // borderBottomLeftRadius: focused ? 29 : 0,
           marginTop: 30,
         },
       }}
@@ -48,7 +44,7 @@ export default function TopNavigationScreen() {
       />
       <Tab.Screen
         name="bundesliga"
-        options={{ tabBarLabel: "Bundesliga" }}
+        options={{ tabBarLabel: "Bundesliga",  }}
         component={Bundesliga}
       />
       <Tab.Screen
@@ -63,16 +59,6 @@ export default function TopNavigationScreen() {
       />
     </Tab.Navigator>
   );
+  
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.WHITE,
-    color: Colors.WHITE,
-    marginTop: 20,
-
-  },
-  text: {
-    color: Colors.WHITE,
-  },
-});

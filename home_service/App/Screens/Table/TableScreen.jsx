@@ -1,11 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Colors from '../Utils/Colors';
+import TopNavigationTable from '../TopNavigation/TopNavigationTable';
 
-export default function SettingScreen() {
+export default function TableScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>SettingScreen</Text>
+      <TopNavigationTable/>
     </View>
   )
 }

@@ -4,16 +4,16 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileScreen from "../ProfileScreen/ProfileScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
-  Entypo,
   Foundation,
   MaterialIcons,
   AntDesign,
+  FontAwesome
 } from "@expo/vector-icons";
 import Colors from "../Utils/Colors";
 import UpNext from "../UpNext/UpNext";
 import BoardScreen from "../Board/BoardScreen";
 import ResultScreen from "../Results/ResultScreen";
-import SettingScreen from "../Settings/SettingScreen";
+import TableScreen from "../Table/TableScreen";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -69,6 +69,32 @@ const TabNavigator = () => (
       }}
     />
 
+    
+<Tab.Screen
+      name="table"
+      component={TableScreen}
+      tabBarOptions={{
+        activeTintColor: Colors.WHITE,
+        inactiveTintColor: Colors.WHITE,
+        style: {
+          backgroundColor: Colors.DARK_GREY,
+        },
+      }}
+      options={{
+        tabBarLabel: ({ color }) => (
+          <Text style={{ color: Colors.WHITE, fontSize: 12 }}>Table</Text>
+        ),
+
+        tabBarIcon: ({ color, size }) => (
+          <FontAwesome name="table" size={24} color={Colors.WHITE} />
+        ),
+
+        tabBarStyle: {
+          backgroundColor: Colors.DARK_GREY, // Set background color here
+        },
+      }}
+    />
+
     <Tab.Screen
       name="board"
       component={BoardScreen}
@@ -93,6 +119,7 @@ const TabNavigator = () => (
         },
       }}
     />
+
     <Tab.Screen
       name="profile"
       component={ProfileScreen}
@@ -118,30 +145,7 @@ const TabNavigator = () => (
       }}
     />
 
-    <Tab.Screen
-      name="setting"
-      component={SettingScreen}
-      tabBarOptions={{
-        activeTintColor: Colors.WHITE,
-        inactiveTintColor: Colors.WHITE,
-        style: {
-          backgroundColor: Colors.DARK_GREY,
-        },
-      }}
-      options={{
-        tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.WHITE, fontSize: 12 }}>Setting</Text>
-        ),
-
-        tabBarIcon: ({ color, size }) => (
-          <AntDesign name="setting" size={24} color={Colors.WHITE} />
-        ),
-
-        tabBarStyle: {
-          backgroundColor: Colors.DARK_GREY, // Set background color here
-        },
-      }}
-    />
+   
   </Tab.Navigator>
 );
 

@@ -1,15 +1,13 @@
-import React, {useState, useEffect} from "react";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
-import Colors from '../../../Utils/Colors'; // Assuming you have a file defining colors
+import { View, Text, StyleSheet,Image, ScrollView } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import Colors from '../../../Utils/Colors';
+import PremierMatchesData from './PremierMatchesData';
 
-const PremierTable = () => {
-
-    const [data, setData] = useState(PremierTableData);
-  useEffect(() => {
-    setData(PremierTableData);
-  }, []);
-
-
+export default function PremierMatchesTable() {
+    const [data, setData]= useState(PremierMatchesData)
+    useEffect(()=>{
+        setData(PremierMatchesData)
+    },[PremierMatchesData])
   return (
     <View style={styles.container}>
       {/* Table header */}
@@ -105,66 +103,63 @@ const PremierTable = () => {
         </View>
       </View> */}
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.LIGHT_GREY,
-    padding: 4,
-    flex: 1,
-    justifyContent: "space-between",
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    padding: 2,
-  },
-  leftCell: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: Colors.DARK_GREY,
-    paddingVertical: 4,
-    paddingRight: 8,
-    
-  },
-  rightCell: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: Colors.DARK_GREY,
-    paddingVertical: 4,
-    paddingLeft: 8,
-  },
-  headerCell: {
-    backgroundColor: Colors.LIGHT_GREY,
-    textAlign: 'left',
-  },
-  headerText: {
-    color: Colors.WHITE,
-  },
-  cellText: {
-    color: Colors.WHITE,
-    fontSize: 12,
-  },
-  cellTextName: {
-    color: Colors.WHITE,
-    fontSize: 12,
-    width: 100,
-    paddingLeft: 6,
-    paddingRight: 6,
-  },
-  iconCell: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  icon: {
-    width: 20,
-    height: 20,
-    marginRight: 35,
-  },
-});
-
-
-export default PremierTable;
+    container: {
+      backgroundColor: Colors.LIGHT_GREY,
+      padding: 4,
+      flex: 1,
+      justifyContent: "space-between",
+    },
+    row: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      padding: 2,
+    },
+    leftCell: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: Colors.DARK_GREY,
+      paddingVertical: 4,
+      paddingRight: 8,
+      
+    },
+    rightCell: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: Colors.DARK_GREY,
+      paddingVertical: 4,
+      paddingLeft: 8,
+    },
+    headerCell: {
+      backgroundColor: Colors.LIGHT_GREY,
+      textAlign: 'left',
+    },
+    headerText: {
+      color: Colors.WHITE,
+    },
+    cellText: {
+      color: Colors.WHITE,
+      fontSize: 12,
+    },
+    cellTextName: {
+      color: Colors.WHITE,
+      fontSize: 12,
+      width: 100,
+      paddingLeft: 6,
+      paddingRight: 6,
+    },
+    iconCell: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+    icon: {
+      width: 20,
+      height: 20,
+      marginRight: 35,
+    },
+  });

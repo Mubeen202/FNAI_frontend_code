@@ -9,14 +9,12 @@ import Laliga from "./Laliga/Laliga";
 import Bundesliga from "./Bundesliga/Bundesliga";
 import Serie from "./Serie_A/Serie";
 import Ligue from "./Ligue_1/Ligue";
-import PremierResult from "./Premier/PremierResult/PremierResult";
-import PremierTable from "./Premier/PremierTable/PremierTable";
+import PremierMatchesTable from "./Premier/PremierMatchesTable/PremierMatchesTable";
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function TopNavigationTable() {
   // Inside your component or screen where you define the tab screen
-  const focused = useIsFocused();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -42,7 +40,7 @@ export default function TopNavigationTable() {
       <Tab.Screen
         name="premier_table"
         options={{ tabBarLabel: "Premier" }}
-        component={PremierTable}
+        component={PremierMatchesTable}
       />
       <Tab.Screen
         name="laliga"

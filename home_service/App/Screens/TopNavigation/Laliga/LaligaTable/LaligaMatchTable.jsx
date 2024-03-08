@@ -57,7 +57,7 @@ export default function LaligaMatchTable() {
               <Image source={item.icon} style={styles.icon} />
             </View>
             <View style={styles.leftCell}>
-              <Text numberOfLines={1} style={styles.cellTextName}>{item.club}</Text>
+              <Text  style={styles.cellTextName}>{item.club}</Text>
             </View>
             <View style={styles.rightCell}>
               <Text style={styles.cellText}>{item.play}</Text>

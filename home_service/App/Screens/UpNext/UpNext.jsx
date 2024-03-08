@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: windowWidth,
     backgroundColor: Colors.LIGHT_GREY,
-    paddingRight: 10,
-    paddingLeft: 2,
-    marginTop:0,
+    paddingRight: 8,
+    paddingLeft: 0,
+    marginTop:24,
   
   },
   text:{

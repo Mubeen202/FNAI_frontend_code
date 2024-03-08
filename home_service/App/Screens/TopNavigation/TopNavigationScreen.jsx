@@ -19,46 +19,84 @@ export default function TopNavigationScreen() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors.WHITE,
-        tabBarInactiveTintColor: Colors.WHITE,
-        tabBarLabelStyle: {
-          fontSize: 11,
-          textTransform: "none",
-          flexWrap: "nowrap", // Prevent label from wrapping to multiple lines
-        },
-        tabBarStyle: {
-          backgroundColor: Colors.DARK_GREY,
-          marginTop: 30,
-        },
       }}
     >
       <Tab.Screen
         name="premier"
-        options={{ tabBarLabel: "Premier" }}
+        options={{ 
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 14 }}>Premier</Text>
+          ),
+          tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+          tabBarIndicatorStyle: {
+            backgroundColor: Colors.YELLOW, // Set primary color here
+          },
+         }}
         component={Premier}
       />
       <Tab.Screen
         name="laliga"
-        options={{ tabBarLabel: "Laliga" }}
+        options={{
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 14 }}>Laliga</Text>
+          ),
+          tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+          tabBarIndicatorStyle: {
+            backgroundColor: Colors.YELLOW, // Set primary color here
+          },
+         }}
         component={Laliga}
       />
       <Tab.Screen
         name="bundesliga"
-        options={{ tabBarLabel: "Bundesliga",  }}
+        options={{ 
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 13 }}>Bundesliga</Text>
+          ),
+          tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+          tabBarIndicatorStyle: {
+            backgroundColor: Colors.YELLOW, // Set primary color here
+          },
+        }}
         component={Bundesliga}
       />
       <Tab.Screen
         name="serie"
-        options={{ tabBarLabel: "Serie" }}
+        options={{ 
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 14 }}>Serie</Text>
+          ),
+          tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+          tabBarIndicatorStyle: {
+            backgroundColor: Colors.YELLOW, // Set primary color here
+          },
+        }}
         component={Serie}
       />
       <Tab.Screen
         name="ligue"
-        options={{ tabBarLabel: "Ligue" }}
+        options={{ 
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 14 }}>Ligue</Text>
+          ),
+          tabBarStyle: {
+            backgroundColor: Colors.DARK_GREY, // Set background color here
+          },
+          tabBarIndicatorStyle: {
+            backgroundColor: Colors.YELLOW, // Set primary color here
+          },
+         }}
         component={Ligue}
       />
     </Tab.Navigator>
   );
-  
 }
 

@@ -30,14 +30,16 @@ const Boards = () => {
           <View style={[styles.leftCell, styles.headerCell]}>
             <Text style={styles.headerText}>POS</Text>
           </View>
-          <View style={[styles.leftCell, styles.headerCell]}>
+          {/* <View style={[styles.leftCell, styles.headerCell]}>
             <Text style={styles.headerText}></Text>
-          </View>
+          </View> */}
           <View style={[styles.leftCell, styles.headerCell]}>
             <Text style={styles.headerText}>Name</Text>
           </View>
 
           {/* Right side columns */}
+          <View style={[styles.rightCell, styles.headerCell]}>
+          </View>
           <View style={[styles.rightCell, styles.headerCell]}>
             <Text style={styles.headerText}>P</Text>
           </View>
@@ -59,11 +61,11 @@ const Boards = () => {
             </View>
             <View style={[styles.leftCell, styles.iconCell]}>
               <Image source={item.icon} style={styles.icon} />
-              
+              <Text numberOfLines={1} style={styles.cellTextName}>{item.name}</Text>
               {/* <SvgXml xml={item.icon} style={styles.icon}/> */}
             </View>
             <View style={styles.leftCell}>
-              <Text style={styles.cellText}>{item.name}</Text>
+              
             </View>
             <View style={styles.rightCell}>
               <Text style={styles.cellText}>{item.p_}</Text>
@@ -141,13 +143,18 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     fontSize: 12,
   },
+  cellTextName: {
+    color: Colors.WHITE,
+    fontSize: 12,
+    width:50,
+    marginRight: 15,
+  },
   iconCell: {
     flexDirection: "row",
   },
   icon: {
     width: 24,
     height: 24,
-    marginRight: 5,
   },
   scrollableContainer: {
     flex: 1,

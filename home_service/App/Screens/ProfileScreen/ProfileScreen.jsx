@@ -69,7 +69,7 @@ const ProfileScreen = () => {
         justifyContent: "space-between",
         backgroundColor: Colors.LIGHT_GREY,
         borderRadius: 10,
-        padding: 24,
+        padding: 4,
         // margin: 10,
         // gap: 60,
       }}
@@ -140,7 +140,7 @@ const ProfileScreen = () => {
           }}
         />
 
-{/* 
+
         <Text
           style={{
             color: COLORS.white,
@@ -291,7 +291,7 @@ const ProfileScreen = () => {
               Add Friend
             </Text>
           </TouchableOpacity>
-        </View> */}
+        </View>
       </View>
 
     </View>

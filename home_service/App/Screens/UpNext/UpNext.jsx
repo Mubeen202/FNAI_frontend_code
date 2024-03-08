@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet,Dimensions } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Colors from '../Utils/Colors';
 import TopNavigationScreen from '../TopNavigation/TopNavigationScreen';
 import Premier from '../TopNavigation/Premier/Premier';
@@ -9,9 +9,9 @@ const windowWidth = Dimensions.get('window').width; // Get the window width
 export default function UpNext() {
   return (
     <View style={styles.container}> 
-      <TopNavigationScreen>
+      <TopNavigationScreen/>
         
-      </TopNavigationScreen>
+      
     </View>
   )
 }

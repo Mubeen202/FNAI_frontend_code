@@ -31,7 +31,7 @@ const TabNavigator = () => (
       }}
       options={{
         tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.WHITE, fontSize: 12 }}>Up Next</Text>
+          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Up Next</Text>
         ),
 
         tabBarIcon: ({ color, size }) => (
@@ -56,7 +56,7 @@ const TabNavigator = () => (
       }}
       options={{
         tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.WHITE, fontSize: 12 }}>Results</Text>
+          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Results</Text>
         ),
 
         tabBarIcon: ({ color, size }) => (
@@ -82,11 +82,11 @@ const TabNavigator = () => (
       }}
       options={{
         tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.WHITE, fontSize: 12 }}>Table</Text>
+          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Table</Text>
         ),
 
         tabBarIcon: ({ color, size }) => (
-          <FontAwesome name="table" size={24} color={Colors.WHITE} />
+          <FontAwesome name="table" size={24} color={color ? Colors.PRIMARY : Colors.WHITE} />
         ),
 
         tabBarStyle: {
@@ -107,7 +107,7 @@ const TabNavigator = () => (
       }}
       options={{
         tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.WHITE, fontSize: 12 }}>Leaderboard</Text>
+          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Leaderboard</Text>
         ),
 
         tabBarIcon: ({ color, size }) => (
@@ -132,7 +132,7 @@ const TabNavigator = () => (
       }}
       options={{
         tabBarLabel: ({ color }) => (
-          <Text style={{ color: Colors.WHITE, fontSize: 12 }}>Profile</Text>
+          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Profile</Text>
         ),
 
         tabBarIcon: ({ color, size }) => (

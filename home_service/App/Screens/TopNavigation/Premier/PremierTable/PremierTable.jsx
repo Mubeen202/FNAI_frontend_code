@@ -18,14 +18,14 @@ const PremierTable = () => {
         <View style={[styles.leftCell, styles.headerCell]}>
           <Text style={styles.headerText}>POS</Text>
         </View>
-        <View style={[styles.leftCell, styles.headerCell]}>
-          
-        </View>
+       
         <View style={[styles.leftCell, styles.headerCell]}>
           <Text style={styles.headerText}>CLUB</Text>
         </View>
 
         {/* Right side columns */}
+        <View style={[styles.rightCell, styles.headerCell]}>
+        </View>
         <View style={[styles.rightCell, styles.headerCell]}>
           <Text style={styles.headerText}>P</Text>
         </View>

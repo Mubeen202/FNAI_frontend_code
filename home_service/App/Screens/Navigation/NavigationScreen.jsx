@@ -30,12 +30,12 @@ const TabNavigator = () => (
         },
       }}
       options={{
-        tabBarLabel: ({ color }) => (
-          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Up Next</Text>
+        tabBarLabel: ({ focused }) => (
+          <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 12 }}>Up Next</Text>
         ),
 
-        tabBarIcon: ({ color, size }) => (
-          <MaterialIcons name="navigate-next" size={24} color={Colors.WHITE} />
+        tabBarIcon: ({ color, size, focused }) => (
+          <MaterialIcons name="navigate-next" size={24} color={focused ? Colors.YELLOW : Colors.WHITE} />
         ),
 
         tabBarStyle: {
@@ -55,12 +55,12 @@ const TabNavigator = () => (
         },
       }}
       options={{
-        tabBarLabel: ({ color }) => (
-          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Results</Text>
+        tabBarLabel: ({ focused }) => (
+          <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 12 }}>Results</Text>
         ),
 
-        tabBarIcon: ({ color, size }) => (
-          <Foundation name="results" size={24} color={Colors.WHITE} />
+        tabBarIcon: ({ color, size, focused }) => (
+          <Foundation name="results" size={24} color={focused ? Colors.YELLOW : Colors.WHITE} />
         ),
 
         tabBarStyle: {
@@ -81,12 +81,12 @@ const TabNavigator = () => (
         },
       }}
       options={{
-        tabBarLabel: ({ color }) => (
-          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Table</Text>
+        tabBarLabel: ({ focused }) => (
+          <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 12 }}>Table</Text>
         ),
 
-        tabBarIcon: ({ color, size }) => (
-          <FontAwesome name="table" size={24} color={color ? Colors.PRIMARY : Colors.WHITE} />
+        tabBarIcon: ({ focused, size }) => (
+          <FontAwesome name="table" size={24} color={focused ? Colors.YELLOW : Colors.WHITE} />
         ),
 
         tabBarStyle: {
@@ -106,12 +106,12 @@ const TabNavigator = () => (
         },
       }}
       options={{
-        tabBarLabel: ({ color }) => (
-          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Leaderboard</Text>
+        tabBarLabel: ({ focused }) => (
+          <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 12 }}>Leaderboard</Text>
         ),
 
-        tabBarIcon: ({ color, size }) => (
-          <MaterialIcons name="leaderboard" size={24} color={Colors.WHITE} />
+        tabBarIcon: ({ color, size, focused }) => (
+          <MaterialIcons name="leaderboard" size={24} color={focused ? Colors.YELLOW : Colors.WHITE} />
         ),
 
         tabBarStyle: {
@@ -131,12 +131,12 @@ const TabNavigator = () => (
         },
       }}
       options={{
-        tabBarLabel: ({ color }) => (
-          <Text style={{ color: color ? Colors.PRIMARY : Colors.WHITE, fontSize: 12 }}>Profile</Text>
+        tabBarLabel: ({ focused }) => (
+          <Text style={{ color: focused ? Colors.YELLOW : Colors.WHITE, fontSize: 12 }}>Profile</Text>
         ),
 
-        tabBarIcon: ({ color, size }) => (
-          <AntDesign name="user" size={24} color={Colors.WHITE} />
+        tabBarIcon: ({ color, size, focused }) => (
+          <AntDesign name="user" size={24} color={focused ? Colors.YELLOW : Colors.WHITE} />
         ),
 
         tabBarStyle: {

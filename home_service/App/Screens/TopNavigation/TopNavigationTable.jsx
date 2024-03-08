@@ -15,6 +15,8 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function TopNavigationTable() {
   // Inside your component or screen where you define the tab screen
+  const focused = useIsFocused();
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -27,7 +29,7 @@ export default function TopNavigationTable() {
           textTransform: "none",
         },
         tabBarStyle: {
-          backgroundColor: Colors.DARK_GREY,
+          backgroundColor: focused ? Colors.DARK_GREY : Colors.WHITE,
           // borderTopLeftRadius: focused ? 29 : 0,
           // borderTopRightRadius: focused ? 29 : 0,
           // borderBottomRightRadius: focused ? 29 : 0,

@@ -14,6 +14,7 @@ import UpNext from "../UpNext/UpNext";
 import BoardScreen from "../Board/BoardScreen";
 import ResultScreen from "../Results/ResultScreen";
 import TableScreen from "../Table/TableScreen";
+import ProfilePage from "../ProfileScreen/ProfilePage";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -122,7 +123,7 @@ const TabNavigator = () => (
 
     <Tab.Screen
       name="profile"
-      component={ProfileScreen}
+      component={ProfilePage}
       tabBarOptions={{
         activeTintColor: Colors.WHITE,
         inactiveTintColor: Colors.WHITE,

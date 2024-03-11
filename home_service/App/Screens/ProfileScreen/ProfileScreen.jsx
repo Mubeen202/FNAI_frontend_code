@@ -103,43 +103,8 @@ const ProfileScreen = () => {
             paddingBottom: 20
           }}
         />
-<Image
-          source={require('../../../assets/European Leagues/DE - Bundes Liga/VfL Bochum.png')}
-          resizeMode="cover"
-          style={{
-            height: 40,
-            width: 40,
-            borderColor: COLORS.primary,
-            marginTop: 0,
-            marginRight:250,
-            paddingBottom: 20
-          }}
-        />
-        <Image
-          source={require('../../../assets/European Leagues/DE - Bundes Liga/1.FSV Mainz 05.png')}
-          resizeMode="cover"
-          style={{
-            height: 40,
-            width: 40,
-            borderColor: COLORS.primary,
-            marginTop: -40,
-            marginRight:150,
-            paddingBottom: 20
-          }}
-        />
-        <Image
-          source={require('../../../assets/European Leagues/DE - Bundes Liga/Bayern Munich.png')}
-          resizeMode="cover"
-          style={{
-            height: 40,
-            width: 40,
-            borderColor: COLORS.primary,
-            marginTop: -38,
-            marginRight:50,
-            paddingBottom: 20
-          }}
-        />
 
+        
 
         <Text
           style={{

@@ -7,5 +7,6 @@ export default{
     PRIMARY:'#E42E70',
     BLACK:'#000000',
     GREY:'#6E6E6D',
-    YELLOW:"#E5E507"
+    YELLOW:"#E5E507",
+    GREEN:"#0E8921"
 }

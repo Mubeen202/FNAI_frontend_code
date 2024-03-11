@@ -8,6 +8,18 @@ export default function PremierMatchesTable() {
     useEffect(()=>{
         setData(PremierMatchesData)
     },[data])
+
+    // Calculate the width of the club cell dynamically based on the longest club name
+  const calculateClubCellWidth = () => {
+    let maxLength = 0;
+    data.forEach(item => {
+      if (item.club.length > maxLength) {
+        maxLength = item.club.length;
+      }
+    });
+    return maxLength * 0.1; // Adjust this multiplier as needed
+  };
+
   return (
     <View style={styles.container}>
       {/* Table header */}
@@ -17,11 +29,13 @@ export default function PremierMatchesTable() {
           <Text style={styles.headerText}>POS</Text>
         </View>
        
-        <View style={[styles.leftCell, styles.headerCell]}>
+        <View style={[styles.leftCell, styles.headerCell, ]}>
           <Text style={styles.headerText}>CLUB</Text>
         </View>
 
         {/* Right side columns */}
+        <View style={[styles.rightCell, styles.headerCell]}>
+        </View>
         <View style={[styles.rightCell, styles.headerCell]}>
         </View>
         <View style={[styles.rightCell, styles.headerCell]}>
@@ -56,9 +70,11 @@ export default function PremierMatchesTable() {
             <View style={[styles.leftCell, styles.iconCell]}>
               <Image source={item.icon} style={styles.icon} />
             </View>
-            <View style={styles.leftCell}>
+            <View style={[styles.leftCell, { flex: calculateClubCellWidth() }]}>
               <Text numberOfLines={1} style={styles.cellTextName}>{item.club}</Text>
             </View>
+            {/* <View style={styles.leftCell}>
+            </View> */}
             <View style={styles.rightCell}>
               <Text style={styles.cellText}>{item.play}</Text>
             </View>
@@ -149,7 +165,7 @@ const styles = StyleSheet.create({
     cellTextName: {
       color: Colors.WHITE,
       fontSize: 12,
-      width: 100,
+      width: 138,
       paddingLeft: 6,
       paddingRight: 6,
     },

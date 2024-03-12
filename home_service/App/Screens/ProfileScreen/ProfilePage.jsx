@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import {images } from "./constants";
 import { StatusBar } from "expo-status-bar";
 import { MaterialIcons, Entypo } from "@expo/vector-icons";
@@ -7,9 +7,21 @@ import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { photos } from "./constants/data";
 import Colors from "../Utils/Colors";
 import icons, { fav_teams, icon } from './constants/icons';
+import Chart from './Charts';
+
 
 
 const ProfilePage = () => {
+   // Calculate the number of icons per row dynamically based on screen width
+   const screenWidth = Dimensions.get('window').width;
+   const iconsPerRow = Math.floor(screenWidth / 60); // Adjust 70 to your icon width + margin
+   // Split fav_teams array into chunks based on iconsPerRow
+   const chunkedIcons = [];
+   for (let i = 0; i < fav_teams.length; i += iconsPerRow) {
+     chunkedIcons.push(fav_teams.slice(i, i + iconsPerRow));
+   }
+   const [showAllIcons, setShowAllIcons] = useState(false);
+ 
   return (
     <ScrollView >
       {/* First Card */}
@@ -106,54 +118,97 @@ const ProfilePage = () => {
 
         {/* Section 5 */}
         <View style={{ marginVertical: 10 }}>
-          <ScrollView horizontal>
-            {/* Horizontal Scrollable Row of Icons */}
-            {fav_teams.map(icon => (
+          {showAllIcons ?
+          <ScrollView >
+          {chunkedIcons.map((row, rowIndex) => (
+            <View key={rowIndex} style={{ flexDirection: 'row', marginLeft: 4, marginBottom: rowIndex !== chunkedIcons.length - 1 ? 10 : 0 }}>
+              {row.map(icon => (
+                <Image
+                  key={icon.id}
+                  source={icon.link}
+                  style={{ width: 50, height: 70, marginHorizontal: 5 }}
+                />
+              ))}
+            </View>
+          ))}
+        </ScrollView> :
+        <ScrollView horizontal> 
+        {chunkedIcons.map((row, rowIndex) => (
+          <View key={rowIndex} style={{ flexDirection: 'row', marginLeft: 4 }}>
+            {row.map(icon => (
               <Image
                 key={icon.id}
                 source={icon.link}
-                style={{ width: 50, height: 60, marginHorizontal: 5 }}
+                style={{ width: 50, height: 70, marginHorizontal: 5 }}
               />
             ))}
-          </ScrollView>
-          <Text style={{ textAlign: 'center', marginTop: 10 , color:Colors.WHITE}}>Show more</Text>
+          </View>
+        ))}
+      </ScrollView> }
+           
+            </View>
+
+            {fav_teams.length >= 7  ? 
+            <TouchableOpacity onPress={() => setShowAllIcons(!showAllIcons)}>
+              <Text style={{ textAlign: 'center', marginTop: 10, color: Colors.WHITE }}>
+                {showAllIcons ? 'Show less' : 'Show more'}
+              </Text>
+            </TouchableOpacity> 
+            :
+            ''
+          }
+            
         </View>
 
 
         
-      </View>
+      
 
       {/* Second Card */}
-      <View style={{ marginVertical: 10, paddingHorizontal: 4, backgroundColor:Colors.LIGHT_GREY, borderRadius:19 }}>
+      <View style={{ marginVertical: 10, paddingHorizontal: 4, backgroundColor:Colors.DARK_GREY, borderRadius:19,  }}>
         {/* Section 1 */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10 }}>
-          <View>
-            <Text>Points: 100</Text>
-            <Text>Predictions: 267</Text>
+          <View style={{paddingLeft:8}}>
+            <Text style={{alignItems:'center', paddingLeft:14, color:Colors.WHITE, fontSize:32}}>267</Text>
+            <Text style={{alignItems:'center',   color:Colors.WHITE, fontSize:16}}>Predictions</Text>
           </View>
-          <View>
-            <Text>Points: 150</Text>
-            <Text>Predictions: 300</Text>
+          <View >
+            <Text style={{alignItems:'center', paddingRight:4, color:Colors.WHITE, fontSize:32}}>2365</Text>
+            <Text style={{alignItems:'center',  paddingLeft:6, color:Colors.WHITE, fontSize:16}}>Points</Text>
           </View>
-          <View>
-            <Text>Points: 200</Text>
-            <Text>Predictions: 350</Text>
+          <View >
+            <Text style={{alignItems:'center', paddingLeft:20, color:Colors.WHITE, fontSize:32}}>8.86</Text>
+            <Text style={{alignItems:'center',  color:Colors.WHITE, fontSize:16}}>Per Prediction</Text>
           </View>
         </View>
 
         {/* Section 2 */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10 }}>
           {/* 6 Texts in Vertical */}
-          <View>
-            <Text>Text 1</Text>
-            <Text>Text 2</Text>
-            <Text>Text 3</Text>
-          </View>
+          <View style={{ paddingLeft: 10 }}>
+  <View style={{ marginBottom: 16 }}>
+    <Text style={{ color: Colors.GREEN, fontSize: 32, textAlign: 'center' }}>25</Text>
+    <Text style={{ color: Colors.WHITE, fontSize: 16, textAlign: 'center' }}>Correct Score</Text>
+  </View>
+  <View style={{ marginBottom: 16 }}>
+    <Text style={{ color: Colors.YELLOW, fontSize: 32, textAlign: 'center' }}>112</Text>
+    <Text style={{ color: Colors.WHITE, fontSize: 16, textAlign: 'center' }}>Correct Outcomes</Text>
+  </View>
+  <View style={{ marginBottom: 16 }}>
+    <Text style={{ color: Colors.RED, fontSize: 32, textAlign: 'center' }}>125</Text>
+    <Text style={{ color: Colors.WHITE, paddingLeft:4, fontSize: 16, textAlign: 'center' }}>Incorrect</Text>
+  </View>
+</View>
+
           {/* Progress Bar */}
           <View>
-            <View style={{ width: 100, height: 100, borderRadius: 50, borderWidth: 5, borderColor: 'green', justifyContent: 'center', alignItems: 'center' }}>
-              <Text>70%</Text>
-            </View>
+          <Chart
+            greenPercentage={70}
+            redPercentage={10}
+            yellowPercentage={20}
+            radius={100}
+          />
+
           </View>
         </View>
       </View>

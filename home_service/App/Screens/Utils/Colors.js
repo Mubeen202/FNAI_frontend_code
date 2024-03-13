@@ -8,6 +8,6 @@ export default{
     BLACK:'#000000',
     GREY:'#6E6E6D',
     YELLOW:"#E5E507",
-    GREEN:"#0E8921",
+    GREEN:"#1EDA2D",
     RED:"#E4240E"
 }

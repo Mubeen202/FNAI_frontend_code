@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ProfileScreen from "../ProfileScreen/ProfileScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
   Foundation,

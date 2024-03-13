@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
 import {images } from "./constants";
 import { StatusBar } from "expo-status-bar";
 import { MaterialIcons, Entypo } from "@expo/vector-icons";
@@ -8,7 +8,7 @@ import { photos } from "./constants/data";
 import Colors from "../Utils/Colors";
 import icons, { fav_teams, icon } from './constants/icons';
 import Chart from './Charts';
-
+import PieChart from 'react-native-expo-pie-chart';
 
 
 const ProfilePage = () => {
@@ -24,6 +24,7 @@ const ProfilePage = () => {
  
   return (
     <ScrollView >
+      <View style={styles.container}>
       {/* First Card */}
       <View style={{ paddingHorizontal: 4, backgroundColor:Colors.DARK_GREY, borderRadius:19 }}>
         {/* Section 1 */}
@@ -37,9 +38,9 @@ const ProfilePage = () => {
           <View style={{ position: 'absolute', top: 100, alignItems: 'center', width: '100%' }}>
             <Image
               source={images.profile}
-              style={{ width: 120, height: 120, borderRadius: 75, marginTop:-50 }}
+              style={{ width: 120, height: 120, borderRadius: 75, marginTop:-70 }}
             />
-            <Text style={{ fontWeight: 'bold', marginTop: 2, fontSize:20, color:Colors.WHITE }}>Mobeen Sheikh</Text>
+            <Text style={{ fontWeight: 'bold', marginTop: 16, fontSize:24, color:Colors.WHITE }}>Mobeen Sheikh</Text>
           </View>
         </View>
 
@@ -94,8 +95,8 @@ const ProfilePage = () => {
           {/* Progress Bar */}
           <View style={{ flexDirection: 'column', alignItems: 'center',  justifyContent: 'space-between', gap:10}}>
             {/* Progress Bar */}
-            <View style={{ width: "100%", height: 20, backgroundColor: 'lightgray', borderRadius: 8 }}>
-              <View style={{ width: '50%', height: '100%', backgroundColor: 'green', borderRadius: 8 }} />
+            <View style={{ width: "100%", height: 20, backgroundColor: Colors.LIGHT_GREY, borderRadius: 8 }}>
+              <View style={{ width: '50%', height: '100%', backgroundColor:Colors.GREEN, borderRadius: 8 }} />
             </View>
 
             {/* Icons Row */}
@@ -150,7 +151,7 @@ const ProfilePage = () => {
 
             {fav_teams.length >= 7  ? 
             <TouchableOpacity onPress={() => setShowAllIcons(!showAllIcons)}>
-              <Text style={{ textAlign: 'center', marginTop: 10, color: Colors.WHITE }}>
+              <Text style={{ textAlign: 'center', marginTop: 8, color: Colors.WHITE, paddingBottom:16 }}>
                 {showAllIcons ? 'Show less' : 'Show more'}
               </Text>
             </TouchableOpacity> 
@@ -186,35 +187,61 @@ const ProfilePage = () => {
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10 }}>
           {/* 6 Texts in Vertical */}
           <View style={{ paddingLeft: 10 }}>
-  <View style={{ marginBottom: 16 }}>
-    <Text style={{ color: Colors.GREEN, fontSize: 32, textAlign: 'center' }}>25</Text>
-    <Text style={{ color: Colors.WHITE, fontSize: 16, textAlign: 'center' }}>Correct Score</Text>
-  </View>
-  <View style={{ marginBottom: 16 }}>
-    <Text style={{ color: Colors.YELLOW, fontSize: 32, textAlign: 'center' }}>112</Text>
-    <Text style={{ color: Colors.WHITE, fontSize: 16, textAlign: 'center' }}>Correct Outcomes</Text>
-  </View>
-  <View style={{ marginBottom: 16 }}>
-    <Text style={{ color: Colors.RED, fontSize: 32, textAlign: 'center' }}>125</Text>
-    <Text style={{ color: Colors.WHITE, paddingLeft:4, fontSize: 16, textAlign: 'center' }}>Incorrect</Text>
-  </View>
-</View>
+            <View style={{ marginBottom: 16 }}>
+              <Text style={{ color: Colors.GREEN, fontSize: 32, textAlign: 'center' }}>25</Text>
+              <Text style={{ color: Colors.WHITE, fontSize: 16, textAlign: 'center' }}>Correct Score</Text>
+            </View>
+            <View style={{ marginBottom: 16 }}>
+              <Text style={{ color: Colors.YELLOW, fontSize: 32, textAlign: 'center' }}>112</Text>
+              <Text style={{ color: Colors.WHITE, fontSize: 16, textAlign: 'center' }}>Correct Outcomes</Text>
+            </View>
+            <View style={{ marginBottom: 16 }}>
+              <Text style={{ color: Colors.RED, fontSize: 32, textAlign: 'center' }}>125</Text>
+              <Text style={{ color: Colors.WHITE, paddingLeft:4, fontSize: 16, textAlign: 'center' }}>Incorrect</Text>
+            </View>
+          </View>
 
           {/* Progress Bar */}
           <View>
-          <Chart
-            greenPercentage={70}
-            redPercentage={10}
-            yellowPercentage={20}
-            radius={100}
-          />
+          <PieChart
+                data={[
+                {
+                    key: 'First Data',
+                    count: 30,
+                    color: 'red',
+                },
+                {
+                    key: 'Second Data',
+                    count: 30,
+                    color: 'yellow',
+                },
+                {
+                    key: 'Third Data',
+                    count: 40,
+                    color: Colors.GREEN,
+                },
+              
+                ]}
+                length='200'
+                width='100'
+            />
 
           </View>
         </View>
+      </View>
       </View>
     </ScrollView>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.LIGHT_GREY,
+    padding: 8, // Adjust paddingTop as needed
+    paddingBottom: 20, // Adjust paddingBottom as needed
+    gap:8,
+    marginTop:20
+  },
+});
 
 export default ProfilePage;

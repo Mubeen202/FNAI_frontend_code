@@ -167,6 +167,32 @@ export const fav_teams=[
         name:"trophy_orange",
         link:require("../../../../assets/European Leagues/IT - Serie A/Cagliari Calcio.png")
     },
+    {
+        id:8,
+        name:"pre_grey",
+        link:require("../../../../assets/European Leagues/GB - Premier League/Burnley FC.png")
+    },
+    {
+        id:9,
+        name:"pre_orange",
+        link:require("../../../../assets/European Leagues/FR - Ligue 1/FC Metz.png")
+    },
+    
+    {
+        id:10,
+        name:"trophy_yellow",
+        link:require("../../../../assets/European Leagues/ES - La Liga/FC Barcelona.png")
+    },
+    {
+        id:11,
+        name:"trophy_grey",
+        link:require("../../../../assets/European Leagues/GB - Premier League/Burnley FC.png")
+    },
+    {
+        id:12,
+        name:"trophy_orange",
+        link:require("../../../../assets/European Leagues/IT - Serie A/Cagliari Calcio.png")
+    },
     
 
 ]

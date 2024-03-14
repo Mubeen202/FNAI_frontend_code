@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import Colors from "../Utils/Colors";
-import icons, { fav_teams, icon } from "./constants/icons";
+import icons from "./constants/icons";
 
 export default function RankCoins() {
      // Adjust Coins

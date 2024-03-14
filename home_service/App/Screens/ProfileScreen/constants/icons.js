@@ -1,4 +1,4 @@
-const basic_grey = require("../assets/icon/basic-grey.png");
+const basic_grey = require("../../../../assets/Icons (1)/1_Bronze_Badge.svg");
 const basic_yellow = require("../assets/icon/basic-grey.png");
 const basic_orange = require("../assets/icon/basic-grey.png");
 

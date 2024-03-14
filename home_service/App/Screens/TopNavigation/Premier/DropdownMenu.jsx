@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../../Utils/Colors';
-// import { CheckBox } from 'react-native-elements';
+import { CheckBox } from 'react-native-elements';
 
 const DropdownMenu = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -20,12 +20,12 @@ const DropdownMenu = () => {
       <View style={styles.section}>
       <View style={styles.subContainer}>
       <Text style={styles.sectionText}>Draw</Text>
-      {/* <CheckBox
+      <CheckBox
         checked={isChecked}
         onPress={onCheckboxChange}
         checkedColor="white" // Set the color to white when checked
         size={28} // Adjust the size as needed
-      /> */}
+      />
     </View>
         <View style={styles.subContainer}>
           <Text style={styles.sectionText}>Winner</Text>

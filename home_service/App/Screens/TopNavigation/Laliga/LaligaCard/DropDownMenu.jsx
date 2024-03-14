@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { Picker } from '@react-native-picker/picker'; // Import Picker from react-native-picker
 import Colors from '../../../Utils/Colors';
-import { CheckBox } from 'react-native-elements';
 
 const DropdownMenu = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -21,26 +19,12 @@ const DropdownMenu = () => {
       <View style={styles.section}>
       <View style={styles.subContainer}>
       <Text style={styles.sectionText}>Draw</Text>
-      <CheckBox
-        checked={isChecked}
-        onPress={onCheckboxChange}
-        checkedColor="white" // Set the color to white when checked
-        size={28} // Adjust the size as needed
-      />
+      
     </View>
         <View style={styles.subContainer}>
           <Text style={styles.sectionText}>Winner</Text>
           {/* Dropdown */}
-          <Picker
-            selectedValue={selectedWinner}
-            style={styles.dropdown}
-            color={Colors.WHITE}
-            onValueChange={(itemValue, itemIndex) => setSelectedWinner(itemValue)}
-          >
-            <Picker.Item  label="Win" value="win" />
-            <Picker.Item label="Lose" value="lose" />
-            <Picker.Item label="Draw" value="draw" />
-          </Picker>
+         
         </View>
       </View>
 

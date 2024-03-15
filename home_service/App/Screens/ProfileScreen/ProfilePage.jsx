@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     padding: 4, // Adjust paddingTop as needed
     paddingBottom: 20, // Adjust paddingBottom as needed
     gap:-2,
-    marginTop:20
+    marginTop:4
   },
   firstCardContainer:{ paddingHorizontal: 4, backgroundColor:Colors.DARK_GREY, borderRadius:19 },
   secondCardContainer:{ marginVertical: 10, paddingHorizontal: 4, backgroundColor:Colors.DARK_GREY, borderRadius:19,  }

@@ -1,12 +1,12 @@
-const profile = require("../assets/images/profileDefault.png");
+const profileDefault = require("../assets/images/profileDefault.png");
 const cover = require("../assets/images/backgroundImage.jpg");
-const white = require("../assets/images/defaultCover.jpg");
+const defaultCover = require("../assets/images/defaultCover.jpg");
 const black = require("../assets/images/Black.png");
 
 export default {
-    profile,
+    profileDefault,
     cover,
-    white,
+    defaultCover,
     black,
    
 }

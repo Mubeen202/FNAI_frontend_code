@@ -5,12 +5,12 @@ import Colors from "../Utils/Colors";
 import { COLORS, images } from "./constants";
 import { useNavigation } from '@react-navigation/native';
 import { Entypo, Ionicons, MaterialIcons, EvilIcons, AntDesign} from '@expo/vector-icons';
-
+import * as ImagePicker from 'expo-image-picker';
 export default function BgProfileImage() {
     // Inside your functional component
     useEffect(() => {
         const backAction = () => {
-          Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+          alert('Hold on!', 'Are you sure you want to go back?', [
             {
               text: 'Cancel',
               onPress: () => null,
@@ -32,59 +32,157 @@ export default function BgProfileImage() {
 
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [imageUri, setImageUri] = useState(null);
+    const [modalVisibleProfile, setModalVisibleProfile] = useState(false);
+    const [coverImageUri, setcoverImageUri] = useState(null);
+    const [profileImageUri, setprofileImageUri] = useState(null);
 
-  const handleCameraPress = async () => {
-    const { cancelled, uri } = await launchCamera({
-      mediaTypes: 'Images',
+    //Cover image controller 
+  const handleCoverCameraPress = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    if (status !== 'granted') {
+        console.log('Camera permission is required to take a photo.');
+        return;
+    }
+
+    let result = await ImagePicker.launchCameraAsync({
+        cameraType: ImagePicker.CameraType.front,
+        allowsEditing: true,
+        aspect: [6, 4],
+        quality: 1,
     });
-    if (!cancelled) {
-      setImageUri(uri);
-      setModalVisible(false);
+
+    if (!result.canceled) {
+        setcoverImageUri(result.assets[0].uri)
+        setModalVisible(false);
     }
   };
 
-  const handleGalleryPress = async () => {
-    const { cancelled, uri } = await launchImageLibrary({
-      mediaTypes: 'Images',
-    });
-    if (!cancelled) {
-      setImageUri(uri);
-      setModalVisible(false);
+  const handleCoverGalleryPress = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== 'granted') {
+        alert('Gallery permission is required to select an image.')
+        return;
+    }
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [6, 4],
+        quality: 1,
+      });
+    
+
+    if (!result.canceled) {
+        setcoverImageUri(result.assets[0].uri)
+        setModalVisible(false);
     }
   };
 
-  const handleRemovePress = () => {
-    setImageUri(null);
+  const handleCoverRemovePress = () => {
+    setcoverImageUri(null);
     setModalVisible(false);
   };
 
+//Profile Image control
+const handleProfileCameraPress = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    if (status !== 'granted') {
+        console.log('Camera permission is required to take a photo.');
+        return;
+    }
 
+    let result = await ImagePicker.launchCameraAsync({
+        cameraType: ImagePicker.CameraType.front,
+        allowsEditing: true,
+        aspect: [4, 4],
+        quality: 1,
+    });
+
+    if (!result.canceled) {
+        setprofileImageUri(result.assets[0].uri)
+        setModalVisibleProfile(false);
+    }
+  };
+
+  const handleProfileGalleryPress = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== 'granted') {
+        alert('Gallery permission is required to select an image.')
+        return;
+    }
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 4],
+        quality: 1,
+      });
+    
+
+    if (!result.canceled) {
+        setprofileImageUri(result.assets[0].uri)
+        setModalVisibleProfile(false);
+    }
+  };
+
+  const handleProfileRemovePress = () => {
+    setprofileImageUri(null);
+    setModalVisibleProfile(false);
+  };
 
   return (
     <>
     <View>
       {/* Section 1 */}
       
-    {/* Modal */}
+    {/* Background Image Modal */}
         <Modal visible={modalVisible} animationType="slide" transparent={true} >
     <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
         <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.buttonBack}>
             <AntDesign name="close" size={24} color={Colors.WHITE} />
         </TouchableOpacity>
-        <Text style={styles.modalTitle}>Profile Image</Text>
+        <Text style={styles.modalTitle}>Cover Image</Text>
         <View style={{flexDirection:'row', gap:10}}>
-            <TouchableOpacity onPress={handleCameraPress} style={styles.button}>
+            <TouchableOpacity onPress={handleCoverCameraPress} style={styles.button}>
             <Ionicons name="camera-outline" size={24} color={Colors.WHITE} />
             <Text style={styles.buttonText}>Camera</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={handleGalleryPress} style={styles.button}>
+            <TouchableOpacity onPress={handleCoverGalleryPress} style={styles.button}>
             <MaterialIcons name="perm-media" size={24} color={Colors.WHITE} />
             <Text style={styles.buttonText}>Gallery</Text>
             </TouchableOpacity>
-            {imageUri && (
-            <TouchableOpacity onPress={handleRemovePress} style={styles.button}>
+            {coverImageUri && (
+            <TouchableOpacity onPress={handleCoverRemovePress} style={styles.button}>
+                <EvilIcons name="trash" size={24} color={Colors.WHITE} />
+                <Text style={styles.buttonText}>Remove</Text>
+            </TouchableOpacity>
+            )}
+        </View>
+        </View>
+    </View>
+    </Modal>
+
+
+    {/* Profile Image Modal */}
+    <Modal visible={modalVisibleProfile} animationType="slide" transparent={true} >
+    <View style={styles.modalContainer}>
+        <View style={styles.modalContent}>
+        <TouchableOpacity onPress={() => setModalVisibleProfile(false)} style={styles.buttonBack}>
+            <AntDesign name="close" size={24} color={Colors.WHITE} />
+        </TouchableOpacity>
+        <Text style={styles.modalTitle}>Profile Image</Text>
+        <View style={{flexDirection:'row', gap:10}}>
+            <TouchableOpacity onPress={handleProfileCameraPress} style={styles.button}>
+            <Ionicons name="camera-outline" size={24} color={Colors.WHITE} />
+            <Text style={styles.buttonText}>Camera</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleProfileGalleryPress} style={styles.button}>
+            <MaterialIcons name="perm-media" size={24} color={Colors.WHITE} />
+            <Text style={styles.buttonText}>Gallery</Text>
+            </TouchableOpacity>
+            {profileImageUri && (
+            <TouchableOpacity onPress={handleProfileRemovePress} style={styles.button}>
                 <EvilIcons name="trash" size={24} color={Colors.WHITE} />
                 <Text style={styles.buttonText}>Remove</Text>
             </TouchableOpacity>
@@ -98,19 +196,21 @@ export default function BgProfileImage() {
       {/* Foreground Image with Name */}
       <View style={styles.forgroundImage}>
   {/* Background Image */}
-  <Image source={images.white} style={styles.backgroundImage} />
+  
+  {coverImageUri ? <Image source={{uri : coverImageUri}} alt="Cover Image" style={styles.backgroundImage} /> : <Image source={images.defaultCover} style={styles.backgroundImage} />}
   
   {/* Profile Image */}
-  <Image source={images.profile} style={styles.profileImage} />
+  {profileImageUri ? <Image source={{uri : profileImageUri}} alt="Profile Image" style={styles.profileImage} /> : <Image source={images.profileDefault} style={styles.profileImage} />}
+  
   
   {/* Change Cover Image Icon */}
-  <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.changeCoverImageIconContainer}>
-    <Ionicons name="image-outline" size={24} color={Colors.WHITE} />
+  <TouchableOpacity onPress={() => setModalVisibleProfile(true)} style={styles.changeProfileImageIconContainer}>
+  <Entypo name="camera" size={24} color={Colors.WHITE} />
   </TouchableOpacity>
 
   {/* Change Profile Image Icon */}
-  <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.changeProfileImageIconContainer}>
-    <Entypo name="camera" size={24} color={Colors.WHITE} />
+  <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.changeCoverImageIconContainer}>
+  <Ionicons name="image-outline" size={24} color={Colors.WHITE} />
   </TouchableOpacity>
 
   {/* Text */}
@@ -150,7 +250,7 @@ forgroundImage: {
     borderRadius: 75,
     marginTop: -180, // Adjust this value as needed
   },
-  changeCoverImageIconContainer: {
+  changeProfileImageIconContainer: {
     position: 'absolute',
     top: 130, // Adjust this value to position the cover image icon vertically
     left: 196, // Adjust this value to position the cover image icon horizontally
@@ -158,7 +258,7 @@ forgroundImage: {
     borderRadius: 999,
     padding: 8,
   },
-  changeProfileImageIconContainer: {
+  changeCoverImageIconContainer: {
     position: 'absolute',
     top: 154, // Adjust this value to position the profile image icon vertically
     right: 10, // Adjust this value to position the profile image icon horizontally

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, Modal, BackHandler,  } from "react-native";
 import { launchCamera, launchImageLibrary } from 'expo-image-picker';
 import Colors from "../Utils/Colors";
-import { images } from "./constants";
+import { COLORS, images } from "./constants";
 import { useNavigation } from '@react-navigation/native';
-import { Entypo, Ionicons, MaterialIcons, EvilIcons} from '@expo/vector-icons';
+import { Entypo, Ionicons, MaterialIcons, EvilIcons, AntDesign} from '@expo/vector-icons';
 
 export default function BgProfileImage() {
     // Inside your functional component
@@ -62,73 +62,125 @@ export default function BgProfileImage() {
 
 
   return (
+    <>
     <View>
       {/* Section 1 */}
       
-
-      {/* Modal */}
-      <Modal visible={modalVisible} animationType="slide" transparent={true}>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Profile Image</Text>
-            <View style={{flexDirection:'row', gap:10}}>
+    {/* Modal */}
+        <Modal visible={modalVisible} animationType="slide" transparent={true} >
+    <View style={styles.modalContainer}>
+        <View style={styles.modalContent}>
+        <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.buttonBack}>
+            <AntDesign name="close" size={24} color={Colors.WHITE} />
+        </TouchableOpacity>
+        <Text style={styles.modalTitle}>Profile Image</Text>
+        <View style={{flexDirection:'row', gap:10}}>
             <TouchableOpacity onPress={handleCameraPress} style={styles.button}>
             <Ionicons name="camera-outline" size={24} color={Colors.WHITE} />
             <Text style={styles.buttonText}>Camera</Text>
-                </TouchableOpacity>
+            </TouchableOpacity>
             <TouchableOpacity onPress={handleGalleryPress} style={styles.button}>
             <MaterialIcons name="perm-media" size={24} color={Colors.WHITE} />
-            <Text style={styles.buttonText}>Galary</Text>
-                </TouchableOpacity>
-                
-            {imageUri && <TouchableOpacity onPress={handleRemovePress} style={styles.button}>
+            <Text style={styles.buttonText}>Gallery</Text>
+            </TouchableOpacity>
+            {imageUri && (
+            <TouchableOpacity onPress={handleRemovePress} style={styles.button}>
                 <EvilIcons name="trash" size={24} color={Colors.WHITE} />
                 <Text style={styles.buttonText}>Remove</Text>
-                    </TouchableOpacity>}
-
-            </View>
-            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.buttonClose}>
-            <MaterialIcons name="close" color={Colors.WHITE} />
-            <Text style={styles.buttonText}>Close</Text>
-                </TouchableOpacity>
-
-          </View>
+            </TouchableOpacity>
+            )}
         </View>
-      </Modal>
+        </View>
+    </View>
+    </Modal>
+
 
       {/* Foreground Image with Name */}
       <View style={styles.forgroundImage}>
-        <Image source={images.white} style={styles.backgroundImage} />
-        
-        
-        <Image source={images.profile} style={styles.profileImage} />
-        <Text style={styles.text}>Mobeen Sheikh</Text>
-      </View>
+  {/* Background Image */}
+  <Image source={images.white} style={styles.backgroundImage} />
+  
+  {/* Profile Image */}
+  <Image source={images.profile} style={styles.profileImage} />
+  
+  {/* Change Cover Image Icon */}
+  <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.changeCoverImageIconContainer}>
+    <Ionicons name="image-outline" size={24} color={Colors.WHITE} />
+  </TouchableOpacity>
 
-      <View style={styles.container}>
-        {/* Background Image */}
-        <TouchableOpacity onPress={() => setModalVisible(true)} style={{borderRadius:44}}>
-        <Entypo name="camera" size={28} style={styles.cameraIcon} color={Colors.LIGHT_GREY}/>
-        </TouchableOpacity>
-      </View>
+  {/* Change Profile Image Icon */}
+  <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.changeProfileImageIconContainer}>
+    <Entypo name="camera" size={24} color={Colors.WHITE} />
+  </TouchableOpacity>
+
+  {/* Text */}
+  <Text style={styles.text}>Mobeen Sheikh</Text>
+</View>
+
+
+ 
+       
+ 
     </View>
+    <View>
+     
+     </View>
+     </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
+  
+//   cameraIcon: {
+//     marginLeft:300,
+//     marginTop:-32,
+//   },
+forgroundImage: {
+    alignItems: 'center',
+    position: 'relative',
   },
-  cameraIcon: {
-    marginLeft:300,
-    marginTop:-32,
+  backgroundImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 15,
+  },
+  profileImage: {
+    width: 140,
+    height: 140,
+    borderRadius: 75,
+    marginTop: -180, // Adjust this value as needed
+  },
+  changeCoverImageIconContainer: {
+    position: 'absolute',
+    top: 130, // Adjust this value to position the cover image icon vertically
+    left: 196, // Adjust this value to position the cover image icon horizontally
+    backgroundColor: Colors.LIGHT_GREY,
+    borderRadius: 999,
+    padding: 8,
+  },
+  changeProfileImageIconContainer: {
+    position: 'absolute',
+    top: 154, // Adjust this value to position the profile image icon vertically
+    right: 10, // Adjust this value to position the profile image icon horizontally
+    backgroundColor: Colors.LIGHT_GREY,
+    borderRadius: 999,
+    padding: 8,
+  },
+  text: {
+    fontWeight: 'bold',
+    marginTop: 6,
+    fontSize: 24,
+    color: Colors.WHITE,
+    textShadowColor: Colors.DARK_GREY,
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 10,
   },
   modalContainer: {
     marginTop:-40,
     flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background overlay
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
     height: 300,
@@ -138,6 +190,17 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  buttonBack: {
+    position: 'absolute',
+    top: 4,
+    left: 244,
+    zIndex: 1,
+    backgroundColor: Colors.LIGHT_GREY,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 99,
+    alignContent:'center'
   },
   modalTitle: {
     fontSize: 20,
@@ -158,15 +221,15 @@ const styles = StyleSheet.create({
     borderRadius: 75,
     marginTop: -180,
   },
-  text: {
-    fontWeight: "bold",
-    marginTop: 6,
-    fontSize: 24,
-    color: Colors.WHITE,
-    textShadowColor: Colors.DARK_GREY,
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 10,
-  },
+//   text: {
+//     fontWeight: "bold",
+//     marginTop: 6,
+//     fontSize: 24,
+//     color: Colors.WHITE,
+//     textShadowColor: Colors.DARK_GREY,
+//     textShadowOffset: { width: 1, height: 1 },
+//     textShadowRadius: 10,
+//   },
   button: {
     backgroundColor: Colors.LIGHT_GREY,
     paddingVertical: 10,
@@ -182,10 +245,11 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginTop: 30,
     alignItems:"center",
-    width:'50%',
+    width:'32%',
   },
   buttonText: {
     color: '#ffffff',
     fontSize: 16,
   },
+  
 });

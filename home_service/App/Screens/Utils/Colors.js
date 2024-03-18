@@ -9,5 +9,6 @@ export default{
     GREY:'#6E6E6D',
     YELLOW:"#E8F724",
     GREEN:"#1EDA2D",
-    RED:"#F82E1E"
+    RED:"#F82E1E",
+    GOLD:'#FBBF32'
 }
